@@ -1,6 +1,7 @@
 package artursfg.breweyclient.web.client;
 
 import artursfg.breweyclient.web.model.BeerDto;
+import java.net.URI;
 import java.util.UUID;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -22,6 +23,9 @@ public class BreweryClient {
 
   public BeerDto getBeerById(UUID id) {
     return restTemplate.getForObject(apihost + BEER_PATH_V1 + id.toString(), BeerDto.class);
+  }
+  public URI saveNewBeer(BeerDto dto){
+    return restTemplate.postForLocation(apihost+BEER_PATH_V1, dto);
   }
 
 
